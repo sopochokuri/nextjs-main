@@ -1,7 +1,7 @@
 "use client"; // This makes this component a Client Component
 
 import React, { useEffect, useState } from "react";
-import { getbrand } from "@/services/Api";
+import { getshop } from "@/services/Api";
 import ProductGrid from "@/components/shop/ProductGrid";
 import EmptyProductGrid from "@/components/shop/EmptyProductGrid";
 import Loadmore from "@/components/common/Loadmore";
@@ -15,7 +15,7 @@ export default function Page({ params }) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await getbrand(params.id);
+        const response = await getshop(params.id);
 
         if (Array.isArray(response)) {
           setProducts(response);

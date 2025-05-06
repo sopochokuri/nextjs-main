@@ -1,58 +1,183 @@
 /* Scroll Bar */
 /*sopo*/
-/* Tooltip wrapper უნდა ჰქონდეს შედარებითი პოზიცია */
-.hover-tooltip-wrapper {
+.tooltip-wrapper {
   position: relative;
   display: inline-block;
-  overflow: visible !important; /* თავიდან აიცილებს დაფარვას */
-  z-index: 1;
 }
-
-/* Tooltip-ის მთავარი სტილი */
-.tooltip {
+.tf-product-info-price .badges-on-sale,
+.btn-custom {
+  background-color: #ff5555 !important;
+}
+.price-on-sale {
+  color: #ff5555 !important;
+}
+.tooltip-box {
+  width: 400px;
   position: absolute;
-  top: 100%; /* პირდაპირ ქვევით გამოჩნდება */
+  top: 125%;
   left: 50%;
   transform: translateX(-50%);
-  background-color: var(--main, #000);
-  color: var(--white, #fff);
-  padding: 8px 10px;
-  font-size: 12px;
-  border-radius: 4px;
-  white-space: normal;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.9);
+  padding: 20px;
+  border-radius: 5px;
+  white-space: nowrap;
   z-index: 9999;
   opacity: 0;
   visibility: hidden;
-  pointer-events: none;
-  width: max-content;
-  max-width: 250px;
-  text-align: center;
-  margin-top: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  pointer-events: none; /* თავიდან გამორთულია hover შიგნით */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
-/* Tooltip გამოჩნდეს hover-ზე */
-.hover-tooltip-wrapper:hover .tooltip {
+.tooltip-wrapper:hover .tooltip-box,
+.tooltip-wrapper:focus-within .tooltip-box {
   opacity: 1;
   visibility: visible;
+  pointer-events: auto; /* როცა აქტიური ხდება, იძლევა interaction-ს */
+}
+.sold-product,
+.soldproduct,
+.oncanshop {
+  font-weight: normal !important;
+}
+.oncanshop {
+  padding-top: 30px;
+  padding-bottom: 10px;
+}
+.soldproduct {
+  padding-bottom: 10px;
+}
+.tooltip-button {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 6px 12px;
+  background-color: #bf00ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-size: 13px;
+  transition: background-color 0.3s ease;
 }
 
-/* Tooltip-სურათი */
-.tooltip img {
-  max-width: 150px;
-  height: auto;
+.tooltip-button:hover {
+  background-color: #bf00ff;
+}
+.tooltip-wrapper:hover .tooltip-box {
+  visibility: visible;
+  opacity: 1;
+}
+
+.info-line {
+  display: flex;
+  gap: 8; /* ან იმდენი px, რამდენიც გსურს */
+  align-items: center;
+  margin-bottom: 5px;
+  flex-wrap: wrap; /* დაამატე ეს */
+}
+.linkcolor {
+  color: #bf00ff !important;
+  font-weight: normal !important;
+}
+.font-normal {
+  word-break: break-word; /* ტექსტის გადატანა საჭიროებისამებრ */
+  flex: 1; /* საშუალებას აძლევს ტექსტს მეტი სივრცე გამოიყენოს */
+}
+.label {
+  display: inline-block;
+  width: 170px; /* ფიქსირებული სიგანე */
+  font-weight: bold;
+  white-space: normal; /* ტექსტი უნდა გადაინაცვლოს ქვედა ხაზზე */
+  word-break: break-word;
+}
+
+.descr {
+  background-color: #f1f1f5;
+  border-radius: 12px;
+  padding: 10px 30px 10px 12px;
+  // border: 1px solid red;
+}
+.descr_title {
+  margin-bottom: 10px;
+}
+.description {
+  margin-top: 45px;
+}
+.descr_text {
+  margin-left: 4px;
+  margin-top: 1px;
+}
+.tf-minicart-recommendations {
+  box-shadow: none !important;
+}
+.bold {
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+.instruction {
+  margin-top: 20px;
+}
+.label {
+  min-width: 100px; /* სურვილისამებრ */
+  font-weight: bold;
+}
+
+.value {
+  font-weight: normal;
+  color: inherit;
+}
+
+.tooltip-portal {
+  position: absolute; /* აპსოლუტური პოზიცია */
+  z-index: 9999;
+
+  width: 200px; /* ფიქსირებული სიგანე */
+  overflow-y: auto; /* საჭიროების შემთხვევაში სკროლი */
+
+  background-color: white;
+  border: 1px solid #ccc;
+
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+.group-img {
+  border-radius: 12px;
+}
+.group-title,
+.group-price span {
+  font-weight: bold !important;
+  text-align: left !important;
+}
+.slick-track {
+  overflow: visible;
+}
+.hover-tooltip {
+  position: relative;
+  display: inline-block;
+  z-index: 10;
+}
+
+.tooltip {
+  position: absolute;
+  top: 100%; /* ზუსტად ქვემოთ */
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 8px; /* პატარა დაშორება */
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: none;
+  z-index: 9999;
+  width: auto;
+  max-width: 200px;
+  white-space: nowrap;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.hover-tooltip:hover .tooltip {
   display: block;
-  margin: 0 auto 5px;
 }
 
-.image-link img {
-  transition: transform 0.3s ease;
-}
-
-.image-link:hover img {
-  transform: translateY(10px); /* ქვემოთ გამოჩენა */
-}
 .custom-arrow {
   position: absolute;
   top: 50%;
